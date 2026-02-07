@@ -18,8 +18,7 @@
 
 ## Screenshot
 
-<!-- Add a screenshot of your app here -->
-<!-- ![Screenshot](screenshot.png) -->
+![The AI Vault - Title Screen](screenshot.png)
 
 ## About
 
