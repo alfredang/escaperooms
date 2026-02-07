@@ -1,0 +1,89 @@
+/* ============================================
+   Room 2: Smart Food Systems Lab
+   Dark with amber accents, dashboard grids
+   ============================================ */
+
+.room-food .bg-grid {
+    background-image:
+        linear-gradient(rgba(245, 158, 11, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(245, 158, 11, 0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+}
+
+.room-food .puzzle-container {
+    border: 1px solid rgba(245, 158, 11, 0.2);
+    background: rgba(26, 21, 10, 0.9);
+}
+
+/* Dashboard Chart Styles */
+.room-food .chart-container {
+    background: rgba(245, 158, 11, 0.05);
+    border: 1px solid rgba(245, 158, 11, 0.15);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-lg);
+    margin-bottom: var(--spacing-lg);
+}
+
+.room-food .bar-chart {
+    display: flex;
+    align-items: flex-end;
+    gap: var(--spacing-md);
+    height: 200px;
+    padding: var(--spacing-md) 0;
+    border-bottom: 1px solid rgba(245, 158, 11, 0.2);
+}
+
+.room-food .bar {
+    flex: 1;
+    background: linear-gradient(to top, rgba(245, 158, 11, 0.6), rgba(245, 158, 11, 0.9));
+    border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+    position: relative;
+    transition: height 0.6s ease;
+    min-width: 40px;
+}
+
+.room-food .bar::after {
+    content: attr(data-value);
+    position: absolute;
+    top: -24px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: var(--font-mono);
+    font-size: var(--font-size-xs);
+    color: var(--color-text-secondary);
+}
+
+.room-food .bar-label {
+    text-align: center;
+    font-size: var(--font-size-xs);
+    color: var(--color-text-muted);
+    margin-top: var(--spacing-xs);
+}
+
+/* Slider constraint indicator */
+.room-food .constraint-indicator {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: var(--radius-sm);
+    font-size: var(--font-size-sm);
+    margin-bottom: var(--spacing-xs);
+}
+
+.room-food .constraint-indicator.met {
+    color: var(--color-success);
+}
+
+.room-food .constraint-indicator.unmet {
+    color: var(--color-error);
+}
+
+/* Recommendation cards */
+.room-food .recommendation-card {
+    background: rgba(245, 158, 11, 0.05);
+    border: 1px solid rgba(245, 158, 11, 0.15);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-lg);
+    margin-bottom: var(--spacing-md);
+}

@@ -1,0 +1,120 @@
+/* ============================================
+   Room 4: Green Tech & Sustainability Core
+   Emerald green, nature-tech fusion
+   ============================================ */
+
+.room-green .bg-grid {
+    background-image:
+        linear-gradient(rgba(16, 185, 129, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(16, 185, 129, 0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
+}
+
+.room-green #game-container::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+        radial-gradient(ellipse at 30% 70%, rgba(16, 185, 129, 0.06), transparent 50%),
+        radial-gradient(ellipse at 70% 30%, rgba(16, 185, 129, 0.04), transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.room-green .puzzle-container {
+    border: 1px solid rgba(16, 185, 129, 0.2);
+    background: rgba(10, 26, 14, 0.9);
+}
+
+/* Simulation outputs */
+.room-green .sim-output {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.room-green .sim-metric {
+    background: rgba(16, 185, 129, 0.05);
+    border: 1px solid rgba(16, 185, 129, 0.15);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md);
+}
+
+.room-green .sim-metric-label {
+    font-family: var(--font-display);
+    font-size: var(--font-size-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-text-muted);
+    margin-bottom: var(--spacing-xs);
+}
+
+.room-green .sim-metric-value {
+    font-family: var(--font-mono);
+    font-size: var(--font-size-2xl);
+    font-weight: 700;
+    transition: color var(--transition-normal);
+}
+
+.room-green .sim-metric-value.good {
+    color: var(--color-success);
+}
+
+.room-green .sim-metric-value.bad {
+    color: var(--color-error);
+}
+
+/* Cause-effect matching */
+.room-green .match-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-xl);
+}
+
+.room-green .match-item {
+    background: rgba(16, 185, 129, 0.08);
+    border: 1px solid rgba(16, 185, 129, 0.2);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md);
+    cursor: pointer;
+    transition: all var(--transition-normal);
+    font-size: var(--font-size-sm);
+}
+
+.room-green .match-item:hover {
+    border-color: rgba(16, 185, 129, 0.5);
+    background: rgba(16, 185, 129, 0.12);
+}
+
+.room-green .match-item.selected {
+    border-color: var(--room-accent);
+    box-shadow: 0 0 10px rgba(16, 185, 129, 0.3);
+}
+
+.room-green .match-item.matched {
+    border-color: var(--color-success);
+    opacity: 0.7;
+}
+
+/* Resource allocation */
+.room-green .resource-card {
+    background: rgba(16, 185, 129, 0.05);
+    border: 1px solid rgba(16, 185, 129, 0.15);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+}
+
+.room-green .budget-display {
+    font-family: var(--font-mono);
+    font-size: var(--font-size-2xl);
+    color: var(--room-accent);
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
+}
+
+@media (max-width: 768px) {
+    .room-green .match-columns {
+        grid-template-columns: 1fr;
+    }
+}

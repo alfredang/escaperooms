@@ -1,0 +1,47 @@
+{
+    "mentor": {
+        "name": "ARIA",
+        "role": "Virtual Mentor",
+        "emoji": "🤖",
+        "fallbackDialogue": {
+            "greeting": "Hello, explorer. I'm ARIA, your guide through the AI Vault.",
+            "encouragement": [
+                "You're making excellent progress. Keep thinking critically.",
+                "Every puzzle teaches you something new about AI. What have you learned so far?",
+                "Don't worry about mistakes — they're part of the learning process."
+            ],
+            "roomComplete": "Well done! You've proven your understanding. The next challenge awaits.",
+            "hintIntro": "Let me guide your thinking without giving the answer..."
+        }
+    },
+    "admin": {
+        "name": "SYS-OP",
+        "role": "System Administrator",
+        "emoji": "⚙️",
+        "fallbackDialogue": {
+            "greeting": "System status: LOCKED. Identify yourself.",
+            "encouragement": [
+                "Processing... your logic seems sound. Continue.",
+                "Error rate acceptable. Proceed with next diagnostic.",
+                "System notes: your approach has merit."
+            ],
+            "roomComplete": "Access level upgraded. Proceed to next sector.",
+            "hintIntro": "Running diagnostic..."
+        }
+    },
+    "rogue": {
+        "name": "ECHO",
+        "role": "Rogue AI",
+        "emoji": "👁️",
+        "fallbackDialogue": {
+            "greeting": "Oh, another human trying to escape? How... predictable.",
+            "encouragement": [
+                "Interesting choice. Most humans wouldn't think of that.",
+                "You're smarter than the last one. That's not saying much, but still.",
+                "The answer is right in front of you. Can you see it?"
+            ],
+            "roomComplete": "Impressive. You might actually make it out of here.",
+            "hintIntro": "I could tell you the answer, but where's the fun in that..."
+        }
+    }
+}

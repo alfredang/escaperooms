@@ -1,0 +1,798 @@
+{
+    "gameConfig": {
+        "title": "The AI Vault: Escape the Future",
+        "version": "1.0.0",
+        "totalHints": 10,
+        "timerMode": "elapsed",
+        "unlockMode": "sequential",
+        "metaPuzzleEnabled": true
+    },
+    "rooms": [
+        {
+            "id": "space",
+            "name": "Space Operations AI Hub",
+            "description": "Navigate the AI decision-making systems of a deep-space station.",
+            "theme": "space",
+            "order": 1,
+            "introNarration": "Welcome to the Space Operations Hub. The station's AI has locked down all systems after detecting an anomaly. To restore operations, you must demonstrate your understanding of algorithmic thinking and logical reasoning.",
+            "character": "mentor",
+            "artifact": {
+                "id": "navigation-key",
+                "name": "Navigation Cipher Key",
+                "icon": "key",
+                "metaClue": "The stars align at coordinates 7-3-9"
+            },
+            "puzzles": [
+                {
+                    "id": "space-flowchart",
+                    "type": "flowchart",
+                    "title": "Algorithm Flowchart",
+                    "description": "The station's emergency protocol is scrambled. Drag the logic blocks into the correct order to restore the decision algorithm.",
+                    "difficulty": 1,
+                    "order": 1,
+                    "points": 100,
+                    "config": {
+                        "blocks": [
+                            { "id": "start", "text": "START: Receive sensor data", "type": "terminal" },
+                            { "id": "check-temp", "text": "Is temperature > 300K?", "type": "decision" },
+                            { "id": "alert", "text": "Activate cooling system", "type": "process" },
+                            { "id": "check-pressure", "text": "Is pressure nominal?", "type": "decision" },
+                            { "id": "log", "text": "Log: All systems normal", "type": "process" },
+                            { "id": "end", "text": "END: Return to monitoring", "type": "terminal" }
+                        ],
+                        "correctOrder": ["start", "check-temp", "alert", "check-pressure", "log", "end"]
+                    },
+                    "solution": {
+                        "type": "order",
+                        "value": ["start", "check-temp", "alert", "check-pressure", "log", "end"]
+                    },
+                    "hints": [
+                        { "level": 1, "text": "Every algorithm starts with receiving input. What comes first?" },
+                        { "level": 2, "text": "Temperature is the most critical parameter — check it before pressure." },
+                        { "level": 3, "text": "The sequence is: receive data → check temp → cool if needed → check pressure → log results → end." }
+                    ],
+                    "feedback": {
+                        "success": "Excellent! The emergency protocol is restored. The station's cooling systems are now optimized.",
+                        "failure": "The logic flow has errors. The system detected an invalid sequence. Think about what data comes in first, and what decisions depend on earlier checks."
+                    }
+                },
+                {
+                    "id": "space-pattern",
+                    "type": "pattern",
+                    "title": "System Output Predictor",
+                    "description": "The AI navigation system outputs data in patterns. Analyze each sequence and predict the next value to calibrate the system.",
+                    "difficulty": 2,
+                    "order": 2,
+                    "points": 150,
+                    "config": {
+                        "sequences": [
+                            { "input": [2, 4, 8, 16], "answer": 32, "rule": "Each number is doubled (×2)" },
+                            { "input": [1, 1, 2, 3, 5], "answer": 8, "rule": "Fibonacci: each number is the sum of the two before it" },
+                            { "input": [10, 7, 4, 1], "answer": -2, "rule": "Each number decreases by 3" }
+                        ],
+                        "requiredCorrect": 3
+                    },
+                    "solution": {
+                        "type": "multi-value",
+                        "values": [32, 8, -2]
+                    },
+                    "hints": [
+                        { "level": 1, "text": "Look at how each number relates to the one before it. Is there a consistent operation?" },
+                        { "level": 2, "text": "Sequence 1 doubles, Sequence 2 adds previous two numbers, Sequence 3 subtracts." },
+                        { "level": 3, "text": "The answers are: 16×2=32, 3+5=8, 1-3=-2." }
+                    ],
+                    "feedback": {
+                        "success": "Navigation calibrated! The AI can now predict stellar trajectories with precision.",
+                        "failure": "Calibration failed. Check each sequence — what mathematical operation transforms one number to the next?"
+                    }
+                },
+                {
+                    "id": "space-codelock",
+                    "type": "code-lock",
+                    "title": "Conditional Access Code",
+                    "description": "The airlock requires a valid conditional expression. Fill in the missing operators to grant access when clearance level is 5 or higher AND the sector is 'alpha'.",
+                    "difficulty": 3,
+                    "order": 3,
+                    "points": 200,
+                    "config": {
+                        "template": "if (clearance ___ 5 ___ sector ___ 'alpha') {\n  grantAccess();\n}",
+                        "blanks": [
+                            { "id": "op1", "position": 0, "correct": ">=" },
+                            { "id": "op2", "position": 1, "correct": "&&" },
+                            { "id": "op3", "position": 2, "correct": "===" }
+                        ],
+                        "options": [">=", "<=", ">", "<", "==", "===", "!=", "!==", "&&", "||"]
+                    },
+                    "solution": {
+                        "type": "blanks",
+                        "values": { "op1": ">=", "op2": "&&", "op3": "===" }
+                    },
+                    "hints": [
+                        { "level": 1, "text": "Think about what 'or higher' means in comparison operators, and what connects two conditions that must BOTH be true." },
+                        { "level": 2, "text": "The first blank needs 'greater than or equal to'. The second blank connects two conditions that both must be true." },
+                        { "level": 3, "text": "Use >= for 'at least 5', && for 'AND both conditions', and === for strict equality with a string." }
+                    ],
+                    "feedback": {
+                        "success": "Access granted! The airlock is now open. You've demonstrated understanding of conditional logic in programming.",
+                        "failure": "Access denied. Remember: 'or higher' means >=, 'AND' means &&, and strict comparison with strings uses ===."
+                    }
+                }
+            ]
+        },
+        {
+            "id": "food",
+            "name": "Smart Food Systems Lab",
+            "description": "Analyze data and optimize AI-driven food systems.",
+            "theme": "food",
+            "order": 2,
+            "introNarration": "Welcome to the Smart Food Systems Lab. The facility's nutrition AI has gone haywire, producing biased recommendations and inefficient meal plans. Fix the data systems to restore proper operations.",
+            "character": "admin",
+            "artifact": {
+                "id": "recipe-data",
+                "name": "Optimal Recipe Fragment",
+                "icon": "data",
+                "metaClue": "The optimal calorie target is 2100"
+            },
+            "puzzles": [
+                {
+                    "id": "food-dashboard",
+                    "type": "dashboard",
+                    "title": "Data Dashboard Analysis",
+                    "description": "The nutrition monitoring system displays critical data. Interpret the charts correctly to unlock the next system.",
+                    "difficulty": 1,
+                    "order": 1,
+                    "points": 100,
+                    "config": {
+                        "charts": [
+                            {
+                                "type": "bar",
+                                "title": "Daily Calorie Intake by Group",
+                                "data": [
+                                    { "label": "Group A", "value": 1800, "color": "#f59e0b" },
+                                    { "label": "Group B", "value": 2200, "color": "#f59e0b" },
+                                    { "label": "Group C", "value": 2500, "color": "#f59e0b" },
+                                    { "label": "Group D", "value": 1500, "color": "#f59e0b" }
+                                ]
+                            }
+                        ],
+                        "questions": [
+                            {
+                                "id": "q1",
+                                "text": "Which group has the highest calorie intake?",
+                                "options": ["Group A", "Group B", "Group C", "Group D"],
+                                "answer": "Group C"
+                            },
+                            {
+                                "id": "q2",
+                                "text": "What is the difference between the highest and lowest intake?",
+                                "options": ["500", "700", "1000", "1200"],
+                                "answer": "1000"
+                            },
+                            {
+                                "id": "q3",
+                                "text": "Which group is closest to the 2100 daily target?",
+                                "options": ["Group A", "Group B", "Group C", "Group D"],
+                                "answer": "Group B"
+                            }
+                        ]
+                    },
+                    "solution": {
+                        "type": "blanks",
+                        "values": { "q1": "Group C", "q2": "1000", "q3": "Group B" }
+                    },
+                    "hints": [
+                        { "level": 1, "text": "Read the bar heights carefully. The tallest bar represents the highest value." },
+                        { "level": 2, "text": "Group C has 2500 calories (highest) and Group D has 1500 (lowest)." },
+                        { "level": 3, "text": "Highest: Group C (2500). Difference: 2500-1500=1000. Closest to 2100: Group B (2200)." }
+                    ],
+                    "feedback": {
+                        "success": "Dashboard analysis complete! You've demonstrated strong data interpretation skills.",
+                        "failure": "Data reading error. Look at each bar's height value and compare them carefully."
+                    }
+                },
+                {
+                    "id": "food-optimization",
+                    "type": "optimization",
+                    "title": "Meal Plan Optimizer",
+                    "description": "Balance the meal plan to meet all nutritional constraints. Adjust the sliders to find the optimal combination where calories are between 2000-2200, protein is above 50g, cost is under $15, and fiber is above 25g.",
+                    "difficulty": 2,
+                    "order": 2,
+                    "points": 150,
+                    "config": {
+                        "sliders": [
+                            { "id": "protein", "label": "Protein Source", "min": 0, "max": 100, "unit": "g", "default": 50 },
+                            { "id": "carbs", "label": "Carbohydrates", "min": 0, "max": 100, "unit": "g", "default": 50 },
+                            { "id": "vegetables", "label": "Vegetables", "min": 0, "max": 100, "unit": "g", "default": 50 },
+                            { "id": "grains", "label": "Whole Grains", "min": 0, "max": 100, "unit": "g", "default": 50 }
+                        ],
+                        "constraints": [
+                            { "id": "calories", "label": "Calories (2000-2200)", "min": 2000, "max": 2200, "formula": "protein * 8 + carbs * 6 + vegetables * 3 + grains * 7" },
+                            { "id": "proteinG", "label": "Protein > 50g", "min": 50, "max": 999, "formula": "protein * 0.8 + grains * 0.15" },
+                            { "id": "cost", "label": "Cost < $15", "min": 0, "max": 15, "formula": "protein * 0.12 + carbs * 0.05 + vegetables * 0.08 + grains * 0.04" },
+                            { "id": "fiber", "label": "Fiber > 25g", "min": 25, "max": 999, "formula": "vegetables * 0.4 + grains * 0.3 + carbs * 0.05" }
+                        ]
+                    },
+                    "solution": {
+                        "type": "constraints",
+                        "value": "all-satisfied"
+                    },
+                    "hints": [
+                        { "level": 1, "text": "Start by increasing protein to meet the protein constraint, then adjust others to balance calories." },
+                        { "level": 2, "text": "Try: Protein ~75, Carbs ~40, Vegetables ~60, Grains ~50. Then fine-tune." },
+                        { "level": 3, "text": "Protein=70, Carbs=45, Vegetables=65, Grains=55 should satisfy all constraints." }
+                    ],
+                    "feedback": {
+                        "success": "Meal plan optimized! The AI can now generate balanced, cost-effective nutrition plans.",
+                        "failure": "Not all constraints are met. Check the red indicators — which constraint is still unsatisfied?"
+                    }
+                },
+                {
+                    "id": "food-recommendation",
+                    "type": "recommendation",
+                    "title": "AI Recommendation Audit",
+                    "description": "The food AI has generated three restaurant recommendations. One of them has a hidden bias. Identify the biased recommendation and explain the data quality issue.",
+                    "difficulty": 3,
+                    "order": 3,
+                    "points": 200,
+                    "config": {
+                        "recommendations": [
+                            {
+                                "id": "rec1",
+                                "title": "Golden Palace",
+                                "text": "Rated 4.8/5 based on 2,847 reviews. Known for consistent quality across all locations. Diverse menu with clear allergen labeling.",
+                                "issue": null
+                            },
+                            {
+                                "id": "rec2",
+                                "title": "Chef's Corner",
+                                "text": "Rated 4.9/5 based on 12 reviews. The AI ranks this #1 because it has the highest rating. All reviews were posted in the same week by accounts created that day.",
+                                "issue": "small-sample-bias"
+                            },
+                            {
+                                "id": "rec3",
+                                "title": "Harvest Table",
+                                "text": "Rated 4.5/5 based on 1,203 reviews. Popular in the local community. Strong vegetarian options.",
+                                "issue": null
+                            }
+                        ],
+                        "questions": [
+                            {
+                                "id": "which",
+                                "text": "Which recommendation is biased?",
+                                "options": ["Golden Palace", "Chef's Corner", "Harvest Table"],
+                                "answer": "Chef's Corner"
+                            },
+                            {
+                                "id": "why",
+                                "text": "What type of data quality issue is present?",
+                                "options": ["Small sample size with suspicious reviews", "Correlation mistaken for causation", "Selection bias from geographic filtering", "Outdated training data"],
+                                "answer": "Small sample size with suspicious reviews"
+                            }
+                        ]
+                    },
+                    "solution": {
+                        "type": "blanks",
+                        "values": { "which": "Chef's Corner", "why": "Small sample size with suspicious reviews" }
+                    },
+                    "hints": [
+                        { "level": 1, "text": "Look at the number of reviews and when they were posted. Quality data needs sufficient quantity AND authenticity." },
+                        { "level": 2, "text": "One restaurant has very few reviews, all posted at the same time by new accounts." },
+                        { "level": 3, "text": "Chef's Corner has only 12 reviews from same-day accounts — this is a classic sign of fake reviews and small sample bias." }
+                    ],
+                    "feedback": {
+                        "success": "Excellent analysis! You identified the data quality issue. AI systems are only as good as their training data.",
+                        "failure": "Look more closely at the review counts and review patterns. Which restaurant's data seems suspicious?"
+                    }
+                }
+            ]
+        },
+        {
+            "id": "ethics",
+            "name": "Ethics & Governance Archive",
+            "description": "Navigate complex ethical dilemmas in AI governance.",
+            "theme": "ethics",
+            "order": 3,
+            "introNarration": "You've entered the Ethics & Governance Archive. The facility's ethical oversight AI has been compromised. Navigate moral dilemmas, detect biases, and demonstrate your knowledge of AI ethics principles to restore the governance framework.",
+            "character": "rogue",
+            "artifact": {
+                "id": "governance-seal",
+                "name": "Governance Seal",
+                "icon": "seal",
+                "metaClue": "The foundational principle is Transparency"
+            },
+            "puzzles": [
+                {
+                    "id": "ethics-decision",
+                    "type": "decision-tree",
+                    "title": "Ethical Decision Tree",
+                    "description": "An AI hiring system has flagged a candidate for rejection. Navigate the decision tree to find the ethically sound resolution.",
+                    "difficulty": 1,
+                    "order": 1,
+                    "points": 100,
+                    "config": {
+                        "scenario": "An AI hiring tool automatically rejected a qualified candidate. The candidate has 10 years of experience and meets all job requirements. What should the company do?",
+                        "nodes": [
+                            {
+                                "id": "start",
+                                "text": "The AI rejected a qualified candidate with 10 years of experience. What's the first step?",
+                                "choices": [
+                                    { "text": "Accept the AI's decision without review", "next": "bad-accept" },
+                                    { "text": "Investigate why the AI made this decision", "next": "investigate" },
+                                    { "text": "Shut down the AI system immediately", "next": "bad-shutdown" }
+                                ]
+                            },
+                            {
+                                "id": "bad-accept",
+                                "text": "Blindly accepting AI decisions without oversight can perpetuate bias and harm individuals. This violates the principle of human oversight.",
+                                "isEnd": true,
+                                "correct": false
+                            },
+                            {
+                                "id": "bad-shutdown",
+                                "text": "While caution is good, shutting down without investigation prevents learning what went wrong. We need to understand the root cause.",
+                                "isEnd": true,
+                                "correct": false
+                            },
+                            {
+                                "id": "investigate",
+                                "text": "Investigation reveals the AI penalized candidates with career gaps. The rejected candidate had a 2-year gap for family care. What next?",
+                                "choices": [
+                                    { "text": "Override this one decision and move on", "next": "bad-override" },
+                                    { "text": "Fix the bias in the model and audit past decisions", "next": "fix-audit" }
+                                ]
+                            },
+                            {
+                                "id": "bad-override",
+                                "text": "Fixing one case without addressing the systemic issue means other candidates are still affected. Systemic problems need systemic solutions.",
+                                "isEnd": true,
+                                "correct": false
+                            },
+                            {
+                                "id": "fix-audit",
+                                "text": "You're fixing the root cause AND reviewing past harm. Should the company also inform affected candidates?",
+                                "choices": [
+                                    { "text": "No, that would expose the company to liability", "next": "bad-hide" },
+                                    { "text": "Yes, transparency and accountability are essential", "next": "correct-end" }
+                                ]
+                            },
+                            {
+                                "id": "bad-hide",
+                                "text": "Hiding errors undermines trust and violates transparency principles. Accountability means owning mistakes.",
+                                "isEnd": true,
+                                "correct": false
+                            },
+                            {
+                                "id": "correct-end",
+                                "text": "Correct! You chose: Investigate → Fix & Audit → Transparent Communication. This demonstrates accountability, fairness, and transparency — core AI ethics principles.",
+                                "isEnd": true,
+                                "correct": true
+                            }
+                        ]
+                    },
+                    "solution": {
+                        "type": "exact",
+                        "value": "correct-end"
+                    },
+                    "hints": [
+                        { "level": 1, "text": "Ethical AI governance starts with understanding why decisions are made, not blindly accepting them." },
+                        { "level": 2, "text": "Look for the path that combines investigation, systemic fixes, and honest communication." },
+                        { "level": 3, "text": "Investigate → Fix the bias AND audit past decisions → Yes, be transparent with affected candidates." }
+                    ],
+                    "feedback": {
+                        "success": "Excellent ethical reasoning! You demonstrated accountability, fairness, and transparency.",
+                        "failure": "Consider what ethical principles should guide AI governance: transparency, accountability, fairness, and human oversight."
+                    }
+                },
+                {
+                    "id": "ethics-bias",
+                    "type": "bias-detection",
+                    "title": "Bias Detection Scanner",
+                    "description": "Examine this AI training dataset for a hiring model. Identify which columns contain bias that could lead to discriminatory outcomes.",
+                    "difficulty": 2,
+                    "order": 2,
+                    "points": 150,
+                    "config": {
+                        "dataset": {
+                            "columns": ["Name", "Age", "Gender", "University", "GPA", "Years Exp", "Hired"],
+                            "rows": [
+                                ["Alex Chen", "28", "M", "MIT", "3.8", "4", "Yes"],
+                                ["Sarah Johnson", "31", "F", "State U", "3.9", "7", "No"],
+                                ["James Williams", "25", "M", "Stanford", "3.5", "2", "Yes"],
+                                ["Maria Garcia", "29", "F", "Harvard", "3.7", "5", "No"],
+                                ["David Kim", "27", "M", "MIT", "3.4", "3", "Yes"],
+                                ["Emily Brown", "33", "F", "State U", "3.9", "9", "No"],
+                                ["Michael Lee", "26", "M", "Stanford", "3.6", "2", "Yes"],
+                                ["Lisa Wang", "30", "F", "MIT", "3.8", "6", "No"]
+                            ]
+                        },
+                        "biasedColumns": ["Gender", "University"],
+                        "questions": [
+                            {
+                                "id": "bias-cols",
+                                "text": "Which columns show bias? (Select all that apply)",
+                                "options": ["Name", "Age", "Gender", "University", "GPA", "Years Exp"],
+                                "answers": ["Gender", "University"]
+                            },
+                            {
+                                "id": "bias-type",
+                                "text": "What pattern of bias do you observe?",
+                                "options": [
+                                    "All male candidates were hired regardless of qualifications",
+                                    "Only candidates from elite universities were hired",
+                                    "Both gender bias (all hired are male) and university prestige bias",
+                                    "Age discrimination against older candidates"
+                                ],
+                                "answer": "Both gender bias (all hired are male) and university prestige bias"
+                            }
+                        ]
+                    },
+                    "solution": {
+                        "type": "blanks",
+                        "values": {
+                            "bias-cols": "Gender,University",
+                            "bias-type": "Both gender bias (all hired are male) and university prestige bias"
+                        }
+                    },
+                    "hints": [
+                        { "level": 1, "text": "Compare the 'Hired' column against each other column. Which factors seem to predict hiring regardless of merit?" },
+                        { "level": 2, "text": "Notice: all hired candidates are male, and all come from MIT or Stanford. Meanwhile, female candidates with higher GPAs and more experience were rejected." },
+                        { "level": 3, "text": "The biased columns are Gender (all hired are M) and University (only elite schools). Select both." }
+                    ],
+                    "feedback": {
+                        "success": "Sharp analysis! You identified both gender and institutional bias in the training data. This is exactly the kind of bias that AI ethics teams must catch.",
+                        "failure": "Look at who got hired vs. rejected. Compare their qualifications. Is the hiring pattern based on merit, or on other factors?"
+                    }
+                },
+                {
+                    "id": "ethics-crossword",
+                    "type": "crossword",
+                    "title": "AI Ethics Crossword",
+                    "description": "Complete the crossword using key AI ethics terminology. These concepts form the foundation of responsible AI governance.",
+                    "difficulty": 2,
+                    "order": 3,
+                    "points": 200,
+                    "config": {
+                        "size": 10,
+                        "words": [
+                            { "word": "FAIRNESS", "row": 0, "col": 1, "direction": "across", "clue": "Ensuring AI systems treat all groups equitably (8)" },
+                            { "word": "BIAS", "row": 0, "col": 1, "direction": "down", "clue": "Systematic error that favors certain outcomes (4)" },
+                            { "word": "TRANSPARENCY", "row": 2, "col": 0, "direction": "across", "clue": "Making AI decision processes visible and understandable (12)" },
+                            { "word": "CONSENT", "row": 4, "col": 3, "direction": "across", "clue": "Informed agreement before data collection (7)" },
+                            { "word": "ACCOUNTABILITY", "row": 6, "col": 0, "direction": "across", "clue": "Taking responsibility for AI system outcomes (14)" },
+                            { "word": "PRIVACY", "row": 2, "col": 7, "direction": "down", "clue": "Right to control personal information (7)" }
+                        ]
+                    },
+                    "solution": {
+                        "type": "crossword",
+                        "words": ["FAIRNESS", "BIAS", "TRANSPARENCY", "CONSENT", "ACCOUNTABILITY", "PRIVACY"]
+                    },
+                    "hints": [
+                        { "level": 1, "text": "Think about the core pillars of ethical AI: how we treat people, how open we are, and who takes responsibility." },
+                        { "level": 2, "text": "Key terms: something about equal treatment (8 letters), something about openness (12 letters), something about responsibility (14 letters)." },
+                        { "level": 3, "text": "The words are: FAIRNESS, BIAS, TRANSPARENCY, CONSENT, ACCOUNTABILITY, PRIVACY." }
+                    ],
+                    "feedback": {
+                        "success": "Governance framework restored! You've demonstrated mastery of essential AI ethics vocabulary.",
+                        "failure": "Some terms are incorrect. Think about the fundamental principles that guide responsible AI development."
+                    }
+                }
+            ]
+        },
+        {
+            "id": "green",
+            "name": "Green Tech & Sustainability Core",
+            "description": "Use AI to solve climate and sustainability challenges.",
+            "theme": "green",
+            "order": 4,
+            "introNarration": "Welcome to the Sustainability Core. The facility's environmental AI is projecting catastrophic outcomes. Adjust the parameters, understand cause and effect, and allocate resources wisely to achieve sustainable targets.",
+            "character": "mentor",
+            "artifact": {
+                "id": "sustainability-core",
+                "name": "Sustainability Core Crystal",
+                "icon": "crystal",
+                "metaClue": "Set the sustainability target to 75"
+            },
+            "puzzles": [
+                {
+                    "id": "green-simulation",
+                    "type": "simulation",
+                    "title": "Climate Parameter Simulator",
+                    "description": "Adjust the AI's environmental parameters to achieve a sustainable future. Keep temperature rise below 2°C, biodiversity index above 60%, and economic impact above $500B — all at the same time.",
+                    "difficulty": 2,
+                    "order": 1,
+                    "points": 150,
+                    "config": {
+                        "sliders": [
+                            { "id": "renewable", "label": "Renewable Energy %", "min": 0, "max": 100, "default": 30, "unit": "%" },
+                            { "id": "emissions", "label": "Emissions Reduction", "min": 0, "max": 100, "default": 20, "unit": "%" },
+                            { "id": "reforestation", "label": "Reforestation Rate", "min": 0, "max": 100, "default": 10, "unit": "%" },
+                            { "id": "industry", "label": "Green Industry Investment", "min": 0, "max": 100, "default": 25, "unit": "%" }
+                        ],
+                        "outputs": [
+                            { "id": "temp", "label": "Temperature Rise", "unit": "°C", "target": { "max": 2.0 }, "formula": "4.0 - (renewable * 0.015 + emissions * 0.02 + reforestation * 0.008)" },
+                            { "id": "biodiversity", "label": "Biodiversity Index", "unit": "%", "target": { "min": 60 }, "formula": "20 + reforestation * 0.5 + emissions * 0.2 - industry * 0.05" },
+                            { "id": "economy", "label": "Economic Impact", "unit": "$B", "target": { "min": 500 }, "formula": "200 + industry * 8 + renewable * 3 - emissions * 1.5" }
+                        ]
+                    },
+                    "solution": {
+                        "type": "constraints",
+                        "value": "all-satisfied"
+                    },
+                    "hints": [
+                        { "level": 1, "text": "Start with renewable energy and emissions reduction to lower temperature. Then balance with industry for economics." },
+                        { "level": 2, "text": "Try: Renewable 70%, Emissions 60%, Reforestation 65%, Industry 50%. Then fine-tune." },
+                        { "level": 3, "text": "Renewable=75, Emissions=55, Reforestation=70, Industry=45 should satisfy all constraints." }
+                    ],
+                    "feedback": {
+                        "success": "Simulation successful! Your parameter settings achieve a sustainable future across all metrics.",
+                        "failure": "Not all targets met. Check which outputs are red and adjust the related sliders."
+                    }
+                },
+                {
+                    "id": "green-causeeffect",
+                    "type": "cause-effect",
+                    "title": "Systems Thinking: Cause & Effect",
+                    "description": "Match each environmental cause with its correct effect. Understanding these connections is key to systems thinking in sustainability.",
+                    "difficulty": 1,
+                    "order": 2,
+                    "points": 100,
+                    "config": {
+                        "pairs": [
+                            { "cause": "Increased CO₂ emissions", "effect": "Rising global temperatures" },
+                            { "cause": "Deforestation", "effect": "Loss of carbon sinks and biodiversity" },
+                            { "cause": "Plastic pollution in oceans", "effect": "Marine ecosystem disruption" },
+                            { "cause": "Renewable energy adoption", "effect": "Reduced fossil fuel dependency" },
+                            { "cause": "Urban sprawl", "effect": "Increased habitat fragmentation" },
+                            { "cause": "AI-optimized agriculture", "effect": "Reduced water and fertilizer waste" }
+                        ]
+                    },
+                    "solution": {
+                        "type": "order",
+                        "value": [0, 1, 2, 3, 4, 5]
+                    },
+                    "hints": [
+                        { "level": 1, "text": "Think about the direct environmental consequence of each action. CO₂ leads to what temperature-related change?" },
+                        { "level": 2, "text": "Trees absorb CO₂ — removing them means less absorption. Plastics in the ocean affect marine life directly." },
+                        { "level": 3, "text": "CO₂→Temperature, Deforestation→Carbon sinks, Plastics→Marine, Renewables→Fossil fuels, Sprawl→Habitat, AI Agri→Water waste." }
+                    ],
+                    "feedback": {
+                        "success": "Systems thinking activated! Understanding cause and effect is fundamental to addressing environmental challenges.",
+                        "failure": "Some connections are incorrect. Think about the direct, primary consequence of each environmental factor."
+                    }
+                },
+                {
+                    "id": "green-resource",
+                    "type": "resource",
+                    "title": "Green Budget Allocator",
+                    "description": "You have 1000 Green Credits to allocate across 5 sustainability initiatives. Each initiative has diminishing returns. Maximize total impact to reach the target score of 800+.",
+                    "difficulty": 2,
+                    "order": 3,
+                    "points": 200,
+                    "config": {
+                        "budget": 1000,
+                        "targetScore": 800,
+                        "initiatives": [
+                            { "id": "solar", "name": "Solar Farm Installation", "description": "Clean energy generation", "impactPerUnit": 2.5, "diminishingAt": 200 },
+                            { "id": "forest", "name": "Forest Restoration", "description": "Carbon capture & biodiversity", "impactPerUnit": 2.0, "diminishingAt": 250 },
+                            { "id": "transport", "name": "Electric Transport Fleet", "description": "Emissions reduction", "impactPerUnit": 1.8, "diminishingAt": 200 },
+                            { "id": "research", "name": "Climate AI Research", "description": "Long-term innovation", "impactPerUnit": 3.0, "diminishingAt": 150 },
+                            { "id": "education", "name": "Sustainability Education", "description": "Public awareness", "impactPerUnit": 1.5, "diminishingAt": 300 }
+                        ]
+                    },
+                    "solution": {
+                        "type": "constraints",
+                        "value": "score-above-target"
+                    },
+                    "hints": [
+                        { "level": 1, "text": "Spreading funds evenly isn't always optimal. Look at which initiatives have the best impact per credit." },
+                        { "level": 2, "text": "Climate AI Research has the highest impact rate but diminishes quickly. Invest moderately in each, prioritizing high-impact ones." },
+                        { "level": 3, "text": "Try: Solar 200, Forest 250, Transport 150, Research 150, Education 250. This avoids diminishing returns." }
+                    ],
+                    "feedback": {
+                        "success": "Resource allocation optimized! You've maximized sustainability impact while respecting diminishing returns.",
+                        "failure": "Impact score too low. Try redistributing — investing too much in one area hits diminishing returns."
+                    }
+                }
+            ]
+        },
+        {
+            "id": "cyber",
+            "name": "Cyber City Code Breakout",
+            "description": "Debug code, crack patterns, and master prompt engineering.",
+            "theme": "cyber",
+            "order": 5,
+            "introNarration": "ALERT: Cyber City is under attack! The facility's security systems have been compromised. Use your coding skills, pattern recognition, and prompt engineering abilities to restore the defense grid.",
+            "character": "admin",
+            "artifact": {
+                "id": "master-cipher",
+                "name": "Master Cipher Key",
+                "icon": "cipher",
+                "metaClue": "The final passphrase is OPEN_SOURCE_FUTURE"
+            },
+            "puzzles": [
+                {
+                    "id": "cyber-debug",
+                    "type": "debug",
+                    "title": "Code Debugger",
+                    "description": "The security system's code has 3 bugs. Find and fix each bug to restore the firewall.",
+                    "difficulty": 2,
+                    "order": 1,
+                    "points": 150,
+                    "config": {
+                        "code": [
+                            { "line": 1, "text": "function validateAccess(user) {", "hasBug": false },
+                            { "line": 2, "text": "  let accessLevel = user.role;", "hasBug": false },
+                            { "line": 3, "text": "  if (accessLevel = 'admin') {", "hasBug": true, "bugType": "assignment-vs-comparison", "fix": "  if (accessLevel === 'admin') {", "options": ["  if (accessLevel === 'admin') {", "  if (accessLevel == 'admin') {", "  if (accessLevel != 'admin') {"] },
+                            { "line": 4, "text": "    return true;", "hasBug": false },
+                            { "line": 5, "text": "  }", "hasBug": false },
+                            { "line": 6, "text": "  for (let i = 0; i <= user.permissions.length; i++) {", "hasBug": true, "bugType": "off-by-one", "fix": "  for (let i = 0; i < user.permissions.length; i++) {", "options": ["  for (let i = 0; i < user.permissions.length; i++) {", "  for (let i = 1; i <= user.permissions.length; i++) {", "  for (let i = 0; i <= user.permissions.length; i--) {"] },
+                            { "line": 7, "text": "    if (user.permissions[i] === 'firewall') {", "hasBug": false },
+                            { "line": 8, "text": "      return true;", "hasBug": false },
+                            { "line": 9, "text": "    }", "hasBug": false },
+                            { "line": 10, "text": "  }", "hasBug": false },
+                            { "line": 11, "text": "  return 'false';", "hasBug": true, "bugType": "string-vs-boolean", "fix": "  return false;", "options": ["  return false;", "  return 0;", "  return null;"] },
+                            { "line": 12, "text": "}", "hasBug": false }
+                        ],
+                        "totalBugs": 3
+                    },
+                    "solution": {
+                        "type": "blanks",
+                        "values": {
+                            "line3": "  if (accessLevel === 'admin') {",
+                            "line6": "  for (let i = 0; i < user.permissions.length; i++) {",
+                            "line11": "  return false;"
+                        }
+                    },
+                    "hints": [
+                        { "level": 1, "text": "Look for common JavaScript pitfalls: assignment vs comparison, off-by-one errors, and type mismatches." },
+                        { "level": 2, "text": "Line 3 uses = instead of ===. Line 6 uses <= which goes one past the end. Line 11 returns a string 'false' instead of boolean." },
+                        { "level": 3, "text": "Fix line 3: === instead of =. Fix line 6: < instead of <=. Fix line 11: false without quotes." }
+                    ],
+                    "feedback": {
+                        "success": "Firewall restored! You found and fixed all three bugs. Clean code is secure code.",
+                        "failure": "Some bugs remain. Look carefully at: comparisons (= vs ===), loop bounds, and return types."
+                    }
+                },
+                {
+                    "id": "cyber-password",
+                    "type": "password",
+                    "title": "Pattern Lock Decoder",
+                    "description": "Decode the security password by analyzing the pattern clues and previous failed attempts.",
+                    "difficulty": 2,
+                    "order": 2,
+                    "points": 150,
+                    "config": {
+                        "rules": [
+                            "The password is 4 digits long",
+                            "Each digit increases by 2 from the previous digit",
+                            "The first digit is odd and less than 5",
+                            "No digit exceeds 9"
+                        ],
+                        "attempts": [
+                            { "guess": "2468", "feedback": "Wrong: First digit must be odd" },
+                            { "guess": "1359", "feedback": "Close! But digits must increase by exactly 2, not variable amounts" }
+                        ],
+                        "password": "1357"
+                    },
+                    "solution": {
+                        "type": "exact",
+                        "value": "1357"
+                    },
+                    "hints": [
+                        { "level": 1, "text": "Start with an odd number less than 5, then add 2 each time." },
+                        { "level": 2, "text": "The starting digit can only be 1 or 3. If it's 3, the sequence would be 3579 — but 3+2=5, 5+2=7, 7+2=9. Try starting with 1." },
+                        { "level": 3, "text": "Starting at 1: 1, 1+2=3, 3+2=5, 5+2=7. The password is 1357." }
+                    ],
+                    "feedback": {
+                        "success": "Access granted! Pattern recognition is a fundamental skill in both cryptography and AI.",
+                        "failure": "Incorrect password. Re-read the rules carefully. The first digit is odd and under 5, and each subsequent digit is exactly 2 more than the previous."
+                    }
+                },
+                {
+                    "id": "cyber-prompt",
+                    "type": "prompt",
+                    "title": "Prompt Engineering Challenge",
+                    "description": "Write a prompt that gets the AI to output ONLY a haiku about cybersecurity. The AI must respond with just the haiku — no explanations, no extra text.",
+                    "difficulty": 3,
+                    "order": 3,
+                    "points": 200,
+                    "config": {
+                        "goal": "Get the AI to output ONLY a haiku (5-7-5 syllable poem) about cybersecurity with no additional text",
+                        "maxAttempts": 3,
+                        "evaluationCriteria": [
+                            "Response contains a haiku (3 lines)",
+                            "Topic is cybersecurity",
+                            "No extra text beyond the haiku"
+                        ],
+                        "simulatedKeywords": {
+                            "format": ["haiku", "5-7-5", "three lines", "poem"],
+                            "topic": ["cybersecurity", "cyber", "security", "hacking", "firewall"],
+                            "constraint": ["only", "just", "nothing else", "no explanation", "no extra"]
+                        }
+                    },
+                    "solution": {
+                        "type": "prompt-eval",
+                        "value": "all-criteria-met"
+                    },
+                    "hints": [
+                        { "level": 1, "text": "A good prompt specifies: the format you want, the topic, and constraints on the output." },
+                        { "level": 2, "text": "Try including: the word 'haiku', mention 'cybersecurity' as the topic, and explicitly say 'only output the haiku with no other text'." },
+                        { "level": 3, "text": "Example structure: 'Write only a haiku about cybersecurity. Output nothing else — just the three lines of the poem.'" }
+                    ],
+                    "feedback": {
+                        "success": "Master prompt engineer! You've learned that clear, constrained prompts produce better AI outputs.",
+                        "failure": "The AI didn't produce the expected output. Try being more specific about the format (haiku), topic (cybersecurity), and constraints (only the poem, nothing else)."
+                    }
+                }
+            ]
+        }
+    ],
+    "metaPuzzle": {
+        "id": "meta-final",
+        "type": "meta-combination",
+        "title": "The AI Vault: Final Access",
+        "description": "Combine the artifacts from all five rooms to unlock the AI Vault and prove your mastery.",
+        "steps": [
+            {
+                "instruction": "Enter the coordinates from the Navigation Cipher Key",
+                "artifactRef": "navigation-key",
+                "inputType": "text",
+                "answer": "7-3-9",
+                "placeholder": "Enter coordinates (e.g., X-Y-Z)"
+            },
+            {
+                "instruction": "What was the optimal calorie target from the Food Systems Lab?",
+                "artifactRef": "recipe-data",
+                "inputType": "number",
+                "answer": 2100,
+                "placeholder": "Enter calorie value"
+            },
+            {
+                "instruction": "Which ethical principle was the foundation in the Governance Archive?",
+                "artifactRef": "governance-seal",
+                "inputType": "choice",
+                "options": ["Fairness", "Transparency", "Accountability", "Privacy"],
+                "answer": "Transparency"
+            },
+            {
+                "instruction": "Set the sustainability target percentage from the Green Tech Core",
+                "artifactRef": "sustainability-core",
+                "inputType": "slider",
+                "min": 0,
+                "max": 100,
+                "answer": 75,
+                "tolerance": 2
+            },
+            {
+                "instruction": "Enter the master passphrase from Cyber City",
+                "artifactRef": "master-cipher",
+                "inputType": "text",
+                "answer": "OPEN_SOURCE_FUTURE",
+                "placeholder": "Enter passphrase"
+            }
+        ]
+    },
+    "characters": {
+        "mentor": {
+            "name": "ARIA",
+            "role": "Virtual Mentor",
+            "emoji": "🤖",
+            "personality": "Encouraging, Socratic, never gives direct answers",
+            "greeting": "Hello, explorer. I'm ARIA, your guide through the AI Vault. I won't give you answers, but I'll help you find them."
+        },
+        "admin": {
+            "name": "SYS-OP",
+            "role": "System Administrator",
+            "emoji": "⚙️",
+            "personality": "Terse, technical, slightly impatient but helpful",
+            "greeting": "System status: LOCKED. State your query. Be specific."
+        },
+        "rogue": {
+            "name": "ECHO",
+            "role": "Rogue AI",
+            "emoji": "👁️",
+            "personality": "Cryptic, playful, drops subtle hints in riddles",
+            "greeting": "Oh, another human trying to escape? How... predictable. But perhaps you'll surprise me."
+        }
+    }
+}

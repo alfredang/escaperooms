@@ -1,0 +1,96 @@
+/* ============================================
+   Room 1: Space Operations AI Hub
+   Deep navy, cyan accents, starfield, holograms
+   ============================================ */
+
+/* Starfield Background */
+.room-space .bg-grid {
+    background-image: none;
+}
+
+.room-space #game-container::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+        radial-gradient(1px 1px at 10% 20%, rgba(6, 182, 212, 0.8), transparent),
+        radial-gradient(1px 1px at 30% 50%, rgba(6, 182, 212, 0.6), transparent),
+        radial-gradient(1px 1px at 50% 10%, rgba(255, 255, 255, 0.7), transparent),
+        radial-gradient(1px 1px at 70% 40%, rgba(6, 182, 212, 0.5), transparent),
+        radial-gradient(1px 1px at 90% 70%, rgba(255, 255, 255, 0.6), transparent),
+        radial-gradient(2px 2px at 15% 80%, rgba(6, 182, 212, 0.9), transparent),
+        radial-gradient(1px 1px at 40% 90%, rgba(255, 255, 255, 0.5), transparent),
+        radial-gradient(1px 1px at 60% 30%, rgba(6, 182, 212, 0.4), transparent),
+        radial-gradient(2px 2px at 85% 15%, rgba(255, 255, 255, 0.8), transparent),
+        radial-gradient(1px 1px at 25% 60%, rgba(6, 182, 212, 0.6), transparent);
+    animation: twinkle 4s ease-in-out infinite alternate;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Holographic Panel Effect */
+.room-space .puzzle-container {
+    border: 1px solid rgba(6, 182, 212, 0.3);
+    background: rgba(10, 14, 26, 0.9);
+    box-shadow:
+        0 0 20px rgba(6, 182, 212, 0.1),
+        inset 0 1px 0 rgba(6, 182, 212, 0.1);
+}
+
+.room-space .puzzle-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(6, 182, 212, 0.5), transparent);
+}
+
+/* Room-specific card styling */
+.room-space .card {
+    border-color: rgba(6, 182, 212, 0.2);
+}
+
+.room-space .card:hover {
+    border-color: rgba(6, 182, 212, 0.5);
+}
+
+/* Holographic scan line */
+.room-space .puzzle-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(6, 182, 212, 0.3), transparent);
+    animation: scanline 3s linear infinite;
+}
+
+@keyframes scanline {
+    0% { top: 0; }
+    100% { top: 100%; }
+}
+
+/* Flowchart blocks */
+.room-space .flowchart-block {
+    border: 1px solid rgba(6, 182, 212, 0.4);
+    background: rgba(6, 182, 212, 0.08);
+    color: var(--color-text-primary);
+}
+
+.room-space .flowchart-block.terminal {
+    border-radius: 20px;
+    border-color: rgba(6, 182, 212, 0.6);
+}
+
+.room-space .flowchart-block.decision {
+    border-color: rgba(245, 158, 11, 0.6);
+    background: rgba(245, 158, 11, 0.08);
+}
+
+.room-space .flowchart-block.process {
+    border-color: rgba(16, 185, 129, 0.6);
+    background: rgba(16, 185, 129, 0.08);
+}

@@ -1,0 +1,199 @@
+/* ============================================
+   Room 5: Cyber City Code Breakout
+   Red/crimson, neon cyberpunk, terminal aesthetic
+   ============================================ */
+
+.room-cyber .bg-grid {
+    background-image:
+        linear-gradient(rgba(239, 68, 68, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(239, 68, 68, 0.03) 1px, transparent 1px);
+    background-size: 30px 30px;
+}
+
+/* Matrix rain effect */
+.room-cyber #game-container::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+        linear-gradient(0deg,
+            rgba(239, 68, 68, 0.02) 25%, transparent 25%,
+            transparent 50%, rgba(239, 68, 68, 0.02) 50%,
+            rgba(239, 68, 68, 0.02) 75%, transparent 75%);
+    background-size: 100% 4px;
+    pointer-events: none;
+    z-index: 0;
+    animation: pulse 4s ease-in-out infinite;
+}
+
+.room-cyber .puzzle-container {
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    background: rgba(26, 10, 10, 0.95);
+}
+
+/* Terminal/code display */
+.room-cyber .code-display {
+    background: #0d0208;
+    border: 1px solid rgba(239, 68, 68, 0.2);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-lg);
+    font-family: var(--font-mono);
+    font-size: var(--font-size-sm);
+    line-height: 1.8;
+    overflow-x: auto;
+}
+
+.room-cyber .code-line {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    padding: 2px var(--spacing-sm);
+    border-radius: var(--radius-sm);
+    transition: background var(--transition-fast);
+}
+
+.room-cyber .code-line:hover {
+    background: rgba(239, 68, 68, 0.05);
+}
+
+.room-cyber .code-line.has-bug {
+    cursor: pointer;
+}
+
+.room-cyber .code-line.has-bug:hover {
+    background: rgba(239, 68, 68, 0.1);
+}
+
+.room-cyber .code-line.bug-found {
+    background: rgba(239, 68, 68, 0.08);
+    border-left: 2px solid var(--color-error);
+}
+
+.room-cyber .code-line.bug-fixed {
+    background: rgba(16, 185, 129, 0.08);
+    border-left: 2px solid var(--color-success);
+}
+
+.room-cyber .line-number {
+    color: rgba(239, 68, 68, 0.4);
+    min-width: 24px;
+    text-align: right;
+    user-select: none;
+}
+
+.room-cyber .line-content {
+    flex: 1;
+}
+
+/* Syntax highlighting */
+.room-cyber .syntax-keyword { color: #ef4444; }
+.room-cyber .syntax-string { color: #f59e0b; }
+.room-cyber .syntax-function { color: #60a5fa; }
+.room-cyber .syntax-operator { color: #8b5cf6; }
+.room-cyber .syntax-comment { color: #6b7280; font-style: italic; }
+
+/* Password keypad */
+.room-cyber .keypad {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-sm);
+    max-width: 240px;
+    margin: var(--spacing-lg) auto;
+}
+
+.room-cyber .keypad-btn {
+    width: 60px;
+    height: 60px;
+    font-family: var(--font-mono);
+    font-size: var(--font-size-xl);
+    font-weight: 700;
+    background: rgba(239, 68, 68, 0.08);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    border-radius: var(--radius-md);
+    color: var(--color-text-primary);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.room-cyber .keypad-btn:hover {
+    background: rgba(239, 68, 68, 0.2);
+    border-color: rgba(239, 68, 68, 0.6);
+}
+
+.room-cyber .keypad-btn:active {
+    transform: scale(0.95);
+}
+
+.room-cyber .password-display {
+    font-family: var(--font-mono);
+    font-size: var(--font-size-3xl);
+    text-align: center;
+    letter-spacing: 0.3em;
+    color: var(--room-accent);
+    padding: var(--spacing-md);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    border-radius: var(--radius-md);
+    background: rgba(239, 68, 68, 0.05);
+    margin-bottom: var(--spacing-lg);
+}
+
+/* Attempt log */
+.room-cyber .attempt-log {
+    font-family: var(--font-mono);
+    font-size: var(--font-size-xs);
+    color: var(--color-text-muted);
+    margin-bottom: var(--spacing-md);
+}
+
+.room-cyber .attempt-entry {
+    display: flex;
+    justify-content: space-between;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-bottom: 1px solid rgba(239, 68, 68, 0.1);
+}
+
+/* Prompt engineering chat */
+.room-cyber .chat-container {
+    background: #0d0208;
+    border: 1px solid rgba(239, 68, 68, 0.2);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-lg);
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.room-cyber .chat-message {
+    margin-bottom: var(--spacing-md);
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-sm);
+}
+
+.room-cyber .chat-message.user {
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid rgba(239, 68, 68, 0.2);
+    text-align: right;
+}
+
+.room-cyber .chat-message.ai {
+    background: rgba(100, 100, 100, 0.1);
+    border: 1px solid rgba(100, 100, 100, 0.2);
+}
+
+.room-cyber .prompt-input {
+    width: 100%;
+    min-height: 80px;
+    resize: vertical;
+    font-family: var(--font-mono);
+    font-size: var(--font-size-sm);
+    background: rgba(239, 68, 68, 0.05);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    color: var(--color-text-primary);
+    padding: var(--spacing-md);
+    border-radius: var(--radius-md);
+}
+
+.room-cyber .prompt-input:focus {
+    border-color: rgba(239, 68, 68, 0.6);
+    box-shadow: 0 0 10px rgba(239, 68, 68, 0.2);
+}

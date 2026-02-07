@@ -1,0 +1,10 @@
+[
+    { "id": "speed-demon", "name": "Speed Demon", "criteria": "Complete any room in under 5 minutes", "icon": "⚡" },
+    { "id": "perfect-logic", "name": "Perfect Logic", "criteria": "Solve all Room 1 puzzles on first attempt", "icon": "🧠" },
+    { "id": "no-hints", "name": "Independent Thinker", "criteria": "Complete game without using AI hints", "icon": "💪" },
+    { "id": "data-master", "name": "Data Master", "criteria": "Achieve 100% accuracy in Room 2", "icon": "📊" },
+    { "id": "ethicist", "name": "AI Ethicist", "criteria": "Complete Room 3 with all bonus insights", "icon": "⚖️" },
+    { "id": "green-hero", "name": "Green Hero", "criteria": "Achieve optimal sustainability score in Room 4", "icon": "🌱" },
+    { "id": "code-breaker", "name": "Code Breaker", "criteria": "Complete Room 5 without any failed attempts", "icon": "🔓" },
+    { "id": "vault-master", "name": "Vault Master", "criteria": "Complete the final AI Vault meta puzzle", "icon": "🏆" }
+]

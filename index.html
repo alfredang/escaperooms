@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The AI Vault: Escape the Future</title>
+    <meta name="description" content="An interactive educational escape room teaching AI, data, logic, and tech literacy">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/room-space.css">
+    <link rel="stylesheet" href="css/room-food.css">
+    <link rel="stylesheet" href="css/room-ethics.css">
+    <link rel="stylesheet" href="css/room-green.css">
+    <link rel="stylesheet" href="css/room-cyber.css">
+
+    <!-- App -->
+    <script type="module" src="javascript/main.js"></script>
+</head>
+<body>
+    <div id="game-container">
+        <!-- Background Grid -->
+        <div class="bg-grid"></div>
+
+        <!-- HUD -->
+        <header id="hud">
+            <div class="hud-section">
+                <span class="hud-room-name" id="hud-room-name">THE AI VAULT</span>
+            </div>
+            <div class="hud-section">
+                <div id="hud-progress-bar" class="progress-bar" style="width: 120px;">
+                    <div class="progress-bar-fill" style="width: 0%"></div>
+                </div>
+            </div>
+            <div class="hud-section">
+                <div class="hud-timer" id="hud-timer">00:00</div>
+                <div class="hud-hints">
+                    <span>💡</span>
+                    <span id="hud-hints">10</span>
+                </div>
+                <button class="btn btn-icon btn-ghost" id="btn-sound-toggle" aria-label="Toggle sound">🔊</button>
+            </div>
+        </header>
+
+        <!-- ==================== TITLE SCREEN ==================== -->
+        <div id="screen-title" class="screen">
+            <div class="screen-content text-center">
+                <div class="title-logo animate-float">
+                    <h1 class="title-main">THE AI VAULT</h1>
+                    <p class="title-sub">ESCAPE THE FUTURE</p>
+                </div>
+                <p class="title-tagline">Prove your understanding of AI, data, logic, and ethics to escape the facility.</p>
+                <div class="title-actions">
+                    <button class="btn btn-primary btn-lg" id="btn-new-game">New Game</button>
+                    <button class="btn btn-secondary btn-lg" id="btn-continue" style="display: none;">Continue</button>
+                    <button class="btn btn-ghost" id="btn-settings">Settings</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== SETTINGS SCREEN ==================== -->
+        <div id="screen-settings" class="screen">
+            <div class="screen-content">
+                <div class="panel" style="max-width: 500px; margin: 0 auto;">
+                    <h3>Game Settings</h3>
+                    <div class="divider"></div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="ai-provider">AI Provider (Optional)</label>
+                        <select class="form-input" id="ai-provider">
+                            <option value="">None (Offline Mode)</option>
+                            <option value="openai">OpenAI</option>
+                            <option value="anthropic">Anthropic</option>
+                        </select>
+                        <small class="text-muted" style="display:block; margin-top: 4px;">
+                            AI enables dynamic hints. Game is fully playable without it.
+                        </small>
+                    </div>
+
+                    <div class="form-group" id="api-key-group" style="display: none;">
+                        <label class="form-label" for="api-key">API Key</label>
+                        <input type="password" class="form-input" id="api-key" placeholder="Enter your API key">
+                        <small class="text-muted" style="display:block; margin-top: 4px;">
+                            Key stored in session only. Never saved to disk.
+                        </small>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                            <input type="checkbox" id="sound-toggle" checked>
+                            Sound Effects
+                        </label>
+                    </div>
+
+                    <div class="divider"></div>
+                    <div style="display: flex; gap: var(--spacing-md); justify-content: flex-end;">
+                        <button class="btn btn-ghost" id="btn-settings-back">Back</button>
+                        <button class="btn btn-primary" id="btn-start-game">Start Game</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== ROOM SELECT SCREEN ==================== -->
+        <div id="screen-room-select" class="screen">
+            <div class="screen-content scrollable">
+                <div class="room-select-header text-center">
+                    <h2>Select Room</h2>
+                    <p class="text-muted">Complete each room to unlock the next. Collect all artifacts to access the vault.</p>
+                </div>
+
+                <div id="room-grid" class="room-grid stagger-children">
+                    <!-- Room 1: Space -->
+                    <div class="room-card card" data-room="space" style="position:relative;">
+                        <div class="room-card-icon">🚀</div>
+                        <h4 class="room-card-title">Space Operations AI Hub</h4>
+                        <p class="room-card-desc">AI decision-making, algorithms, probability</p>
+                        <div class="room-card-footer">
+                            <span class="room-status badge badge-accent">UNLOCKED</span>
+                            <span class="room-card-puzzles text-muted">3 puzzles</span>
+                        </div>
+                    </div>
+
+                    <!-- Room 2: Food -->
+                    <div class="room-card card locked" data-room="food" style="position:relative;">
+                        <div class="room-card-icon">🍽</div>
+                        <h4 class="room-card-title">Smart Food Systems Lab</h4>
+                        <p class="room-card-desc">Data analysis, optimization, AI recommendations</p>
+                        <div class="room-card-footer">
+                            <span class="room-status badge">LOCKED</span>
+                            <span class="room-card-puzzles text-muted">3 puzzles</span>
+                        </div>
+                    </div>
+
+                    <!-- Room 3: Ethics -->
+                    <div class="room-card card locked" data-room="ethics" style="position:relative;">
+                        <div class="room-card-icon">🏛</div>
+                        <h4 class="room-card-title">Ethics & Governance Archive</h4>
+                        <p class="room-card-desc">AI ethics, bias, governance frameworks</p>
+                        <div class="room-card-footer">
+                            <span class="room-status badge">LOCKED</span>
+                            <span class="room-card-puzzles text-muted">3 puzzles</span>
+                        </div>
+                    </div>
+
+                    <!-- Room 4: Green -->
+                    <div class="room-card card locked" data-room="green" style="position:relative;">
+                        <div class="room-card-icon">🌳</div>
+                        <h4 class="room-card-title">Green Tech & Sustainability Core</h4>
+                        <p class="room-card-desc">AI for climate, systems thinking</p>
+                        <div class="room-card-footer">
+                            <span class="room-status badge">LOCKED</span>
+                            <span class="room-card-puzzles text-muted">3 puzzles</span>
+                        </div>
+                    </div>
+
+                    <!-- Room 5: Cyber -->
+                    <div class="room-card card locked" data-room="cyber" style="position:relative;">
+                        <div class="room-card-icon">💻</div>
+                        <h4 class="room-card-title">Cyber City Code Breakout</h4>
+                        <p class="room-card-desc">Coding logic, cybersecurity, LLM basics</p>
+                        <div class="room-card-footer">
+                            <span class="room-status badge">LOCKED</span>
+                            <span class="room-card-puzzles text-muted">3 puzzles</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Meta Puzzle Button -->
+                <div class="text-center" style="margin-top: var(--spacing-2xl);">
+                    <button class="btn btn-primary btn-lg locked" id="btn-meta-puzzle" disabled>
+                        🔐 Enter The AI Vault
+                    </button>
+                    <p class="text-muted" style="margin-top: var(--spacing-sm); font-size: var(--font-size-xs);">
+                        Complete all 5 rooms to unlock
+                    </p>
+                </div>
+
+                <div class="text-center" style="margin-top: var(--spacing-xl);">
+                    <button class="btn btn-ghost" id="btn-room-back">← Main Menu</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== ROOM SCREEN ==================== -->
+        <div id="screen-room" class="screen">
+            <div class="screen-content scrollable" style="padding-top: calc(var(--header-height) + var(--spacing-xl));">
+                <div id="room-content">
+                    <!-- Dynamically populated by room modules -->
+                </div>
+                <div style="display: flex; justify-content: space-between; margin-top: var(--spacing-xl);">
+                    <button class="btn btn-ghost" id="btn-room-hub">← Back to Hub</button>
+                    <button class="btn btn-secondary" id="btn-hint">💡 Hint</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== META PUZZLE SCREEN ==================== -->
+        <div id="screen-meta" class="screen">
+            <div class="screen-content scrollable" style="padding-top: calc(var(--header-height) + var(--spacing-xl));">
+                <div id="meta-content">
+                    <!-- Dynamically populated -->
+                </div>
+                <div style="margin-top: var(--spacing-xl);">
+                    <button class="btn btn-ghost" id="btn-meta-back">← Back to Hub</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== END SCREEN ==================== -->
+        <div id="screen-end" class="screen">
+            <div class="screen-content text-center">
+                <div class="end-header">
+                    <h1>🏆 VAULT UNLOCKED</h1>
+                    <p class="title-sub">You've escaped The AI Vault</p>
+                </div>
+                <div id="end-content">
+                    <!-- Dynamically populated -->
+                </div>
+                <div style="margin-top: var(--spacing-2xl);">
+                    <button class="btn btn-primary btn-lg" id="btn-play-again">Play Again</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== HINT MODAL ==================== -->
+        <div id="hint-modal" class="modal-overlay">
+            <div class="modal">
+                <div class="modal-header">
+                    <h4 class="modal-title">Hint</h4>
+                    <button class="modal-close">✕</button>
+                </div>
+                <div class="character-bubble">
+                    <div class="character-avatar">🤖</div>
+                    <div class="character-text">
+                        <div class="character-name">ARIA</div>
+                        <div class="character-message">Loading hint...</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Toast Container -->
+        <div id="toast-container" class="toast-container"></div>
+    </div>
+
+    <!-- Settings: show API key field when provider selected -->
+    <script>
+        document.getElementById('ai-provider')?.addEventListener('change', (e) => {
+            const group = document.getElementById('api-key-group');
+            if (group) group.style.display = e.target.value ? 'block' : 'none';
+        });
+    </script>
+</body>
+</html>
